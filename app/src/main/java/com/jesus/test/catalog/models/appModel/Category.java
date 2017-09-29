@@ -17,7 +17,7 @@ public class Category {
         this.attributes = attributes;
     }
 
-    private class Attributes {
+    public class Attributes {
 
         @SerializedName("im:id")
         private String imId;

@@ -24,7 +24,7 @@ public class ImReleaseDate {
         this.attributes = attributes;
     }
 
-    private class Attributes {
+    public class Attributes {
         private String label;
 
         public String getLabel() {

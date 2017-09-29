@@ -15,7 +15,7 @@ public class Link {
         this.attributes = attributes;
     }
 
-    private class Attributes {
+    public class Attributes {
         private String rel;
         private String type;
         private String href;

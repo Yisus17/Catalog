@@ -25,7 +25,7 @@ public class ImPrice {
         this.attributes = attributes;
     }
     /*****************************Atributos**************************************/
-        private class Attributes {
+        public class Attributes {
             private String amount;
             private String currency;
 

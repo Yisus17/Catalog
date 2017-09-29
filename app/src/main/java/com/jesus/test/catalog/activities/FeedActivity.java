@@ -1,4 +1,4 @@
-package com.jesus.test.catalog;
+package com.jesus.test.catalog.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.jesus.test.catalog.R;
 import com.jesus.test.catalog.adapters.AppListAdapter;
 import com.jesus.test.catalog.models.Feed;
 

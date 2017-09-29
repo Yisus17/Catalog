@@ -1,6 +1,7 @@
 package com.jesus.test.catalog.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.gson.Gson;
 import com.jesus.test.catalog.R;
+import com.jesus.test.catalog.activities.AppDetailActivity;
+import com.jesus.test.catalog.activities.FeedActivity;
+import com.jesus.test.catalog.activities.MainActivity;
 import com.jesus.test.catalog.models.App;
 
 import java.util.ArrayList;
@@ -41,7 +46,7 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        App myApp = dataset.get(position);
+        final App myApp = dataset.get(position);
         holder.appName.setText((CharSequence) myApp.getImName().getLabel());
 
         Glide.with(context)
@@ -50,6 +55,20 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.ViewHold
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.appImagePreview);
+
+        holder.appImagePreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Gson gson = new Gson();
+                String appString = gson.toJson(myApp);
+
+                Intent intent = new Intent(context, AppDetailActivity.class);
+                intent.putExtra("appString", appString);
+
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -74,13 +93,7 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.ViewHold
             appImagePreview = (ImageView) itemView.findViewById(R.id.app_image_preview);
             appName = (TextView) itemView.findViewById(R.id.app_name);
 
-            appImagePreview.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context.getApplicationContext(), appName.getText(),
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
+
         }
     }
 }

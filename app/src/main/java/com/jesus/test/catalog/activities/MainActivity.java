@@ -1,4 +1,4 @@
-package com.jesus.test.catalog;
+package com.jesus.test.catalog.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,12 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.jesus.test.catalog.R;
 import com.jesus.test.catalog.api.ItunesService;
-import com.jesus.test.catalog.models.App;
 import com.jesus.test.catalog.models.Feed;
 import com.jesus.test.catalog.models.ItunesResponse;
-
-import java.net.ConnectException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
