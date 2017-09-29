@@ -67,6 +67,12 @@ public class AppDetailActivity extends AppCompatActivity {
         appRelease.setText(myApp.getImReleaseDate().getAttributes().getLabel());
 
 
+        TextView appRights = (TextView) findViewById(R.id.appRights);
+        appRights.setText(myApp.getRights().getLabel());
+
+        TextView appSummary = (TextView) findViewById(R.id.appSummary);
+        appSummary.setText(myApp.getSummary().getLabel());
+
 
     }
 
