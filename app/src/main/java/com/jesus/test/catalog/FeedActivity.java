@@ -2,24 +2,46 @@ package com.jesus.test.catalog;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.jesus.test.catalog.adapters.AppListAdapter;
 import com.jesus.test.catalog.models.Feed;
 
 public class FeedActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private AppListAdapter appListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
+        //Obteniendo la data del feed
         Gson gson = new Gson();
         String feedString = getIntent().getStringExtra("feedString");
         Feed feed =  gson.fromJson(feedString, Feed.class);
+        /****/
 
-        TextView textView = (TextView) findViewById(R.id.textView3);
-        textView.setText(feed.getEntry().get(0).getImName().getLabel());
+        fillGrid();
+
+
+        appListAdapter.addList(feed.getEntry());
+
+
+    }
+
+
+    private void fillGrid() {
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        appListAdapter = new AppListAdapter(this);
+        recyclerView.setAdapter(appListAdapter);
+        recyclerView.setHasFixedSize(true);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+        recyclerView.setLayoutManager(layoutManager);
 
     }
 }

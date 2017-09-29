@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ItunesResponse> call, Throwable t) {
                 Log.e("APLICACION", "onFailure: " + t.getMessage());
-                if(t instanceof ConnectException){
+
                     sendData(getSavedData()); //Usar los datos previamente cargados
-                }
+
             }
         });
 
